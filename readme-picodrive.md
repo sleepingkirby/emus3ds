@@ -158,7 +158,11 @@ You will need:
 - citro3d v1.0.0
 - picasso
 
+citro3d contains lib and include directory. Files in those folders need to go into libctru's lib and include directory respectively
+libctru will also need to be compiled and installed (run "make", then "make install")
+cp picodrive-make to makfile
 Then build by using *make*.
+
 
 -------------------------------------------------------------------------------------------------------
 
