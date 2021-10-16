@@ -477,7 +477,8 @@ void RAMCheatUpdate(void)
     {
       /* byte patch */
       //PicoMem.zram[cheatlist[index].address & 0xFFFF] = cheatlist[index].data;
-      PicoMem.ram[cheatlist[index].address & 0xFFFF] = cheatlist[index].data;
+      int swap = (cheatlist[index].address % 2) == 1 ? -1 : 1; //fixing the big endian swap 
+      PicoMem.ram[ (cheatlist[index].address & 0xFFFF) + swap ] = (cheatlist[index].data & 0x00FF);
     }
   }
 }
