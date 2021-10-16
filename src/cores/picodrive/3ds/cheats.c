@@ -281,7 +281,7 @@ u32 decode_cheat(char *string, int index)
     cheatlist[index].data = data;
 
     if (!(PicoIn.AHW & PAHW_SMS))
-      cheatlist[index].old = *(u16 *)(Pico.rom + (cheatlist[index].address & 0xFFFFFE));
+      //cheatlist[index].old = *(u16 *)(Pico.rom + (cheatlist[index].address & 0xFFFFFE));
 
     maxcheats++;
   }
@@ -298,7 +298,7 @@ u32 enable_cheat(int index, u8 enable)
     {
       if (!(PicoIn.AHW & PAHW_SMS))
       {
-        *(u16 *)(Pico.rom + (cheatlist[index].address & 0xFFFFFE)) = cheatlist[index].old;
+        //*(u16 *)(Pico.rom + (cheatlist[index].address & 0xFFFFFE)) = cheatlist[index].old;
       }
       else
       {
@@ -448,12 +448,14 @@ void RAMCheatUpdate(void)
     if (cheatlist[index].data & 0xFF00)
     {
       /* word patch */
-      *(u16 *)(PicoMem.zram + (cheatlist[index].address & 0xFFFE)) = cheatlist[index].data;
+      //*(u16 *)(PicoMem.zram + (cheatlist[index].address & 0xFFFE)) = cheatlist[index].data;
+      *(u16 *)(PicoMem.ram + (cheatlist[index].address & 0xFFFE)) = cheatlist[index].data;
     }
     else
     {
       /* byte patch */
-      PicoMem.zram[cheatlist[index].address & 0xFFFF] = cheatlist[index].data;
+      //PicoMem.zram[cheatlist[index].address & 0xFFFF] = cheatlist[index].data;
+      PicoMem.ram[cheatlist[index].address & 0xFFFF] = cheatlist[index].data;
     }
   }
 }
