@@ -156,6 +156,7 @@ You will need:
 - devkitARM r45
 - libctru v1.0.0
 - citro3d v1.0.0
+- picasso
 
 Then build by using *make*.
 
